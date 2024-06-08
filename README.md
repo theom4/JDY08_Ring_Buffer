@@ -1,5 +1,7 @@
-# JDY08_Ring_Buffer
+# JDY08 Ring Buffer
 This library is used for interfacing with the JDY08 BLE Module and can estimate the distance based off the RSSI signal
+
+
 ![photo](JDY08_module.png)
 
 Requirements :
