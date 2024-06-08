@@ -11,7 +11,7 @@ Requirements :
 
 How to estimate the distance based off the RSSI measurement :
 
-First, open the LightBlue app, you should see the module available(under a similar name perhaps,in my case it's labeled as "JDY") :
+First, open the LightBlue app, you should see the module available(under a similar name perhaps, in my case it's labeled as "JDY") :
 
 
 ![lbbild](https://github.com/theom4/JDY08_Ring_Buffer/assets/154817034/a9c05a33-732a-4de5-a4f8-a6377fe9fa0e)
@@ -26,4 +26,5 @@ Sending and receiving the data via BLE with the LightBlue app :
 
   On the JDY08 module side, the data can be sent or received by simply writing or reading via UART with the MCU.Once the app is connected to the module, 
 go to the "RX-TX" section for commnication.
+
 And that's pretty much it! 
