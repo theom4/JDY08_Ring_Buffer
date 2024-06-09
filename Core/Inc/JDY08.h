@@ -42,9 +42,10 @@ void clear_ring_buf(void);
 void store_buffer(uint8_t* src_buf,uint16_t len);
 int32_t check_for_string(char* str);
 /*Use these functins for receiving and sending data to the module*/
-bool JDY08_Write(char* buf,uint16_t len);
-bool JDY08_Read(char* buf, uint16_t len);
+bool JDY08_Transmit(char* buf,uint16_t len);
+bool JDY08_getData(char* buf, uint16_t len);
 /*****************************************************************/
+/*Functions used for estimating the distance*/
 float rssi_get_n_factor(int16_t rssi_value,uint8_t dist);
 float rssi_get_distance(float n_factor,int16_t rssi_value);
 #endif /* INC_JDY08_H_ */
