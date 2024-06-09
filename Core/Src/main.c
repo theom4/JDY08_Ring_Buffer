@@ -41,8 +41,6 @@ int main(void)
   
   JDY08_init();
   /*Enable these to receive data via UART*/
-  __HAL_UART_ENABLE_IT(&huart2,UART_IT_RXNE); 
-  __HAL_UART_ENABLE_IT(&huart3,UART_IT_RXNE);
 
    /*Change these parameters according to your testing*/
    n_factor = rssi_get_n_factor(-70,2);
