@@ -267,17 +267,7 @@ void DMA1_Stream6_IRQHandler(void)
 void USART2_IRQHandler(void)
 {
   /* USER CODE BEGIN USART2_IRQn 0 */
-	if(__HAL_UART_GET_FLAG(&huart2,UART_FLAG_RXNE) == 1)
-	{
-
-		if(BT_RingBuf.rx_unlocked == 1)
-		{
-			BT_RingBuf.rx_unlocked = 0;
-			HAL_UARTEx_ReceiveToIdle_DMA(BT_PORT,(uint8_t*)BT_RingBuf.temp_buf,128);
-			__HAL_DMA_DISABLE_IT(&hdma_usart2_rx,DMA_IT_HT);
-
-		}
-	}
+	
   /* USER CODE END USART2_IRQn 0 */
   HAL_UART_IRQHandler(&huart2);
   /* USER CODE BEGIN USART2_IRQn 1 */
