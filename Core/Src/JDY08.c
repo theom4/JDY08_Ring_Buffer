@@ -11,17 +11,25 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
 	}
 
 }
-bool JDY08_Write(char* str, uint16_t len)
+bool JDY08_transmit(char* str, uint16_t len)
 {
 	int status = HAL_UART_Transmit(UART_HANDLE,(uint8_t*)str,len,100);
 	if(status == HAL_OK) return true;
 			else return false;
 }
-bool JDY08_Read(char* str, uint16_t len)
+bool JDY08_getData(char* str, uint16_t len)
 {
-	int status = HAL_UART_Receive(UART_HANDLE,(uint8_t*)str,len,100);
-	if(status == HAL_OK) return true;
-			else return false;
+	if(buffer_empty() == 1)
+	{
+		return false;
+	}
+	for(uint16_t idx = 0; idx < len; idx ++)
+	{
+		str[idx] = BT_RingBuf.ring_buf[BT_RingBuf.tail];
+		BT_RingBuf.tail = (BT_RingBuf.tail + 1) % RING_BUFFER_SIZE;
+
+	}
+	return true;
 }
 
 void JDY08_init(void)
