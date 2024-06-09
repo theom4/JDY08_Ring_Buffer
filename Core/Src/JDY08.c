@@ -11,6 +11,19 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
 	}
 
 }
+bool JDY08_Write(char* str, uint16_t len)
+{
+	int status = HAL_UART_Transmit(UART_HANDLE,(uint8_t*)str,len,100);
+	if(status == HAL_OK) return true;
+			else return false;
+}
+bool JDY08_Read(char* str, uint16_t len)
+{
+	int status = HAL_UART_Receive(UART_HANDLE,(uint8_t*)str,len,100);
+	if(status == HAL_OK) return true;
+			else return false;
+}
+
 void JDY08_init(void)
 {
 	clear_ring_buf();
