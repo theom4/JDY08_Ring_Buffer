@@ -25,6 +25,6 @@ which should be used when calling the function
 Sending and receiving the data via BLE with the LightBlue app :
 
   On the JDY08 module side, the data can be sent or received by simply writing or reading via UART with the MCU.Once the app is connected to the module, 
-go to the "RX-TX" section for commnication.
+go to the "RX-TX" section for communication.
 
 And that's pretty much it! 
