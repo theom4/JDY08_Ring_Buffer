@@ -15,8 +15,8 @@
 #define JDY08_UART       USART2
 /*Change this handle according to your peripheral*/
 extern UART_HandleTypeDef huart2;
+extern DMA_HandleTypeDef hdma_usart2_rx;
 #define UART_HANDLE &huart2
-
 /*---------------------------------*/
 typedef struct
 {
