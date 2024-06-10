@@ -9,7 +9,7 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
 		store_buffer(BT_RingBuf.temp_buf,Size);
 		BT_RingBuf.rx_unlocked = true;
 		 HAL_UARTEx_ReceiveToIdle_DMA(UART_HANDLE,BT_RingBuf.ring_buf, RING_BUFFER_SIZE);
-                __HAL_DMA_DISABLE_IT(&DMA_HANDLE, DMA_IT_HT);
+                __HAL_DMA_DISABLE_IT(DMA_HANDLE, DMA_IT_HT);
 	}
 
 }
@@ -39,16 +39,14 @@ void JDY08_init(void)
 	clear_ring_buf();
 	BT_RingBuf.rx_unlocked = true;
 	HAL_UARTEx_ReceiveToIdle_DMA(UART_HANDLE,BT_RingBuf.ring_buf, RING_BUFFER_SIZE);
-       __HAL_DMA_DISABLE_IT(&DMA_HANDLE, DMA_IT_HT);
+       __HAL_DMA_DISABLE_IT(DMA_HANDLE, DMA_IT_HT);
 }
 void clear_ring_buf(void)
 {
-    /*Disable the interrupts for preventing concurrent memory access*/
-	__HAL_UART_DISABLE_IT(&huart2,UART_IT_RXNE);
-	memset(BT_RingBuf.ring_buf,'0',RING_BUFFER_SIZE * sizeof(BT_RingBuf.ring_buf[0]));
+        memset(BT_RingBuf.ring_buf,'0',RING_BUFFER_SIZE * sizeof(BT_RingBuf.ring_buf[0]));
 	BT_RingBuf.head = 0;
 	BT_RingBuf.tail = 0;
-	__HAL_UART_ENABLE_IT(&huart2,UART_IT_RXNE);
+	
 }
 uint16_t get_buff_size(void)
 {
