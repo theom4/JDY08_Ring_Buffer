@@ -17,6 +17,7 @@
 extern UART_HandleTypeDef huart2;
 extern DMA_HandleTypeDef hdma_usart2_rx;
 #define UART_HANDLE &huart2
+#define DMA_HANDLE &hdma_usart2_rx
 /*---------------------------------*/
 typedef struct
 {
