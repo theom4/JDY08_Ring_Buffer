@@ -43,7 +43,7 @@ void clear_ring_buf(void);
 void store_buffer(uint8_t* src_buf,uint16_t len);
 int32_t check_for_string(char* str);
 /*Use these functins for receiving and sending data to the module*/
-bool JDY08_Transmit(char* buf,uint16_t len);
+bool JDY08_transmit(char* buf,uint16_t len);
 bool JDY08_getData(char* buf, uint16_t len);
 /*****************************************************************/
 /*Functions used for estimating the distance*/
