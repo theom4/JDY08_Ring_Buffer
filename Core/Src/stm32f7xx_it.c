@@ -62,8 +62,7 @@ extern DMA_HandleTypeDef hdma_usart3_tx;
 extern UART_HandleTypeDef huart2;
 extern UART_HandleTypeDef huart3;
 /* USER CODE BEGIN EV */
-extern bool debug_rx_unlocked;
-extern uint8_t debug_rx_buf[128];
+
 
 /* USER CODE END EV */
 
@@ -281,17 +280,7 @@ void USART2_IRQHandler(void)
 void USART3_IRQHandler(void)
 {
   /* USER CODE BEGIN USART3_IRQn 0 */
-	if(__HAL_UART_GET_FLAG(&huart2,UART_FLAG_RXNE) == 1)
-	{
-
-		if(debug_rx_unlocked == 1)
-		{
-			debug_rx_unlocked = 0;
-			HAL_UARTEx_ReceiveToIdle_DMA(DEBUG_PORT,(uint8_t*)debug_rx_buf,128);
-			__HAL_DMA_DISABLE_IT(&hdma_usart3_rx,DMA_IT_HT);
-
-		}
-	}
+	
   /* USER CODE END USART3_IRQn 0 */
   HAL_UART_IRQHandler(&huart3);
   /* USER CODE BEGIN USART3_IRQn 1 */
