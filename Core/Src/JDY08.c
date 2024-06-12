@@ -272,7 +272,17 @@ bool copy_until(char* str_delim,char* dest_buf,uint16_t len)
 	return true;
 }
 
-
+bool string_present(char* str)
+{
+	int16_t len_until_str = check_for_string(str);
+	uint16_t len = strlen(str);
+	if(len_until_str != -1)
+	{
+		BT_RingBuf.tail = (BT_RingBuf.tail + len_until_str + len) % RING_BUFFER_SIZE;
+		return 1;
+	}
+	else return 0;
+}
 
 
 
